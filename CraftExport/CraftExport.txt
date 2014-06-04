@@ -1,0 +1,5 @@
+## Title: |cDCDC22CraftExport|r by Swizzy
+## APIVersion: 100004
+## SavedVariables: CraftExport
+
+CraftExport.lua
