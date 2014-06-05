@@ -597,6 +597,7 @@ end
 local function ScanInventory()
 	ScanBag(BAG_BANK)
 	ScanBag(BAG_BACKPACK)
+	ScanBag(BAG_WORN)
 end
 
 local function ScanStyles()
