@@ -42,6 +42,7 @@ function CraftExportAddon.Initialize(...)
 	CraftExportAddon.Exported = ZO_SavedVars:New("CraftExport", 1, nil, {})	
 	CraftExportAddon.Exported["Woodworking"] = {
 		Bow = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -52,6 +53,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Froststaff = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -62,6 +64,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Firestaff = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -72,6 +75,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Lightningstaff = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -82,6 +86,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Healingstaff = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -92,6 +97,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Shield = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -104,6 +110,7 @@ function CraftExportAddon.Initialize(...)
 	}	
 	CraftExportAddon.Exported["BlackSmithing"] = {
 		Chest = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -114,6 +121,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Boots = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -124,6 +132,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Gloves = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -134,6 +143,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Head = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -144,6 +154,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Legs = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -154,6 +165,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Shoulders = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -164,6 +176,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Belt = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -174,6 +187,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Sword = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -184,6 +198,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Axe = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -194,6 +209,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Hammer = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -204,6 +220,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Greatsword = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -214,6 +231,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Battleaxe = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -224,6 +242,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Maul = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -234,6 +253,7 @@ function CraftExportAddon.Initialize(...)
 			Weighted = 0
 		},
 		Dagger = {
+			Armor = false,
 			Charged = 0,
 			Defending = 0,
 			Infused = 0,
@@ -246,6 +266,7 @@ function CraftExportAddon.Initialize(...)
 	}
 	CraftExportAddon.Exported["Clothing_Light"] = {
 		Chest = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -256,6 +277,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Boots = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -266,6 +288,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Gloves = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -276,6 +299,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Head = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -286,6 +310,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Legs = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -296,6 +321,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Shoulders = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -306,6 +332,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Belt = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -318,6 +345,7 @@ function CraftExportAddon.Initialize(...)
 	}
 	CraftExportAddon.Exported["Clothing_Medium"] = {
 		Chest = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -328,6 +356,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Boots = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -338,6 +367,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Gloves = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -348,6 +378,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Head = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -358,6 +389,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Legs = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -368,6 +400,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Shoulders = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -378,6 +411,7 @@ function CraftExportAddon.Initialize(...)
 			WellFitted = 0
 		},
 		Belt = {
+			Armor = true,
 			Divines = 0,
 			Exploration = 0,
 			Impenetrable = 0,
@@ -410,13 +444,15 @@ end
 
 local function ScanType(list, crafttype, index, traittype, objtype)
 	for name, _ in pairs(CraftExportAddon.Exported[list][objtype]) do
-		tType, _, tKnown = GetSmithingResearchLineTraitInfo(crafttype, index, CraftExportAddon[traittype][name])
-		if tKnown then
-			CraftExportAddon.Exported[list][objtype][name] = 1
-		else
-			_, tRemain = GetSmithingResearchLineTraitTimes(crafttype, index, CraftExportAddon[traittype][name])
-			if tRemain then
-				CraftExportAddon.Exported[list][objtype][name] = 2
+		if name ~= "Armor" then
+			tType, _, tKnown = GetSmithingResearchLineTraitInfo(crafttype, index, CraftExportAddon[traittype][name])
+			if tKnown then
+				CraftExportAddon.Exported[list][objtype][name] = 1
+			else
+				_, tRemain = GetSmithingResearchLineTraitTimes(crafttype, index, CraftExportAddon[traittype][name])
+				if tRemain then
+					CraftExportAddon.Exported[list][objtype][name] = 2
+				end
 			end
 		end
 	end

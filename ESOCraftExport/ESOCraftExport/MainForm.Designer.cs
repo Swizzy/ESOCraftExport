@@ -53,12 +53,15 @@
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
-            this.StylesBox = new ESOCraftExport.CustomListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.FilterWeapons = new System.Windows.Forms.RadioButton();
+            this.FilterArmors = new System.Windows.Forms.RadioButton();
             this.FilterClothingMedium = new System.Windows.Forms.CheckBox();
             this.FilterClothingLight = new System.Windows.Forms.CheckBox();
             this.FilterWoodworking = new System.Windows.Forms.CheckBox();
             this.FilterBlacksmithing = new System.Windows.Forms.CheckBox();
+            this.StylesBox = new ESOCraftExport.CustomListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -160,10 +163,10 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.Location = new System.Drawing.Point(12, 64);
+            this.listView1.Location = new System.Drawing.Point(12, 115);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1008, 219);
+            this.listView1.Size = new System.Drawing.Size(1008, 168);
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -255,35 +258,61 @@
             // 
             this.button1.Location = new System.Drawing.Point(486, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 46);
+            this.button1.Size = new System.Drawing.Size(123, 46);
             this.button1.TabIndex = 1;
             this.button1.Text = "Rescan Servers";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // StylesBox
-            // 
-            this.StylesBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StylesBox.ItemHeight = 16;
-            this.StylesBox.Location = new System.Drawing.Point(1026, 39);
-            this.StylesBox.Name = "StylesBox";
-            this.StylesBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.StylesBox.Size = new System.Drawing.Size(120, 244);
-            this.StylesBox.Sorted = true;
-            this.StylesBox.TabIndex = 4;
-            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.radioButton1);
+            this.groupBox4.Controls.Add(this.FilterWeapons);
+            this.groupBox4.Controls.Add(this.FilterArmors);
             this.groupBox4.Controls.Add(this.FilterClothingMedium);
             this.groupBox4.Controls.Add(this.FilterClothingLight);
             this.groupBox4.Controls.Add(this.FilterWoodworking);
             this.groupBox4.Controls.Add(this.FilterBlacksmithing);
-            this.groupBox4.Location = new System.Drawing.Point(601, 12);
+            this.groupBox4.Location = new System.Drawing.Point(12, 64);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(416, 46);
+            this.groupBox4.Size = new System.Drawing.Size(639, 42);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Filter";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(597, 18);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(36, 17);
+            this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "All";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // FilterWeapons
+            // 
+            this.FilterWeapons.AutoSize = true;
+            this.FilterWeapons.Location = new System.Drawing.Point(495, 19);
+            this.FilterWeapons.Name = "FilterWeapons";
+            this.FilterWeapons.Size = new System.Drawing.Size(95, 17);
+            this.FilterWeapons.TabIndex = 1;
+            this.FilterWeapons.Text = "Only Weapons";
+            this.FilterWeapons.UseVisualStyleBackColor = true;
+            this.FilterWeapons.CheckedChanged += new System.EventHandler(this.Filter_CheckedChanged);
+            // 
+            // FilterArmors
+            // 
+            this.FilterArmors.AutoSize = true;
+            this.FilterArmors.Location = new System.Drawing.Point(407, 19);
+            this.FilterArmors.Name = "FilterArmors";
+            this.FilterArmors.Size = new System.Drawing.Size(81, 17);
+            this.FilterArmors.TabIndex = 1;
+            this.FilterArmors.Text = "Only Armors";
+            this.FilterArmors.UseVisualStyleBackColor = true;
+            this.FilterArmors.CheckedChanged += new System.EventHandler(this.Filter_CheckedChanged);
             // 
             // FilterClothingMedium
             // 
@@ -337,6 +366,17 @@
             this.FilterBlacksmithing.UseVisualStyleBackColor = true;
             this.FilterBlacksmithing.CheckedChanged += new System.EventHandler(this.Filter_CheckedChanged);
             // 
+            // StylesBox
+            // 
+            this.StylesBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StylesBox.ItemHeight = 16;
+            this.StylesBox.Location = new System.Drawing.Point(1026, 39);
+            this.StylesBox.Name = "StylesBox";
+            this.StylesBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.StylesBox.Size = new System.Drawing.Size(120, 244);
+            this.StylesBox.Sorted = true;
+            this.StylesBox.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,8 +390,9 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(1174, 333);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "ESOCraftExport";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -395,6 +436,9 @@
         private System.Windows.Forms.CheckBox FilterWoodworking;
         private System.Windows.Forms.CheckBox FilterClothingLight;
         private System.Windows.Forms.CheckBox FilterClothingMedium;
+        private System.Windows.Forms.RadioButton FilterArmors;
+        private System.Windows.Forms.RadioButton FilterWeapons;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 

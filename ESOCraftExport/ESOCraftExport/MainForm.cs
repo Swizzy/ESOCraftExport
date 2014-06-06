@@ -6,7 +6,7 @@
     using System.Windows.Forms;
 
     public partial class MainForm: Form {
-        private List<Server> _servers = new List<Server>();
+        private readonly List<Server> _servers = new List<Server>();
 
         public MainForm() {
             InitializeComponent();
@@ -46,15 +46,16 @@
                     ret.BackColor = Color.Red;
                     break;
                 case Server.Account.Character.WeaponArmorItem.TraitStatus.NotAvailable:
-                    ret.Text = "N/A";
+                    ret.Text = @"N/A";
                     break;
             }
             return ret;
         }
 
         private void AddListViewItem(string type, KeyValuePair<string, Server.Account.Character.WeaponArmorItem> tmp) {
-            var itm = new ListViewItem(tmp.Key);
-            itm.UseItemStyleForSubItems = false;
+            var itm = new ListViewItem(tmp.Key) {
+                                                    UseItemStyleForSubItems = false
+                                                };
             itm.SubItems.Add(type);
             itm.SubItems.Add(GetSubItemFormatted(ref itm, tmp.Value.Charged));
             itm.SubItems.Add(GetSubItemFormatted(ref itm, tmp.Value.Defending));
@@ -81,26 +82,43 @@
             foreach(var style in ((Server.Account.Character)CharacterBox.SelectedItem).Styles)
                 StylesBox.Items.Add(new CustomListBox.CustomListBoxItem(style.Key, style.Value));
             if(FilterBlacksmithing.Checked) {
-                foreach(var tmp in ((Server.Account.Character)CharacterBox.SelectedItem).Blacksmithing)
-                    AddListViewItem("Blacksmithing", tmp);
+                foreach(var tmp in ((Server.Account.Character)CharacterBox.SelectedItem).Blacksmithing) {
+                    if(FilterWeapons.Checked && tmp.Value.Armor)
+                        continue;
+                    if(FilterArmors.Checked && !tmp.Value.Armor)
+                        continue;
+                    AddListViewItem(!tmp.Value.Armor ? "Blacksmithing" : "Heavy Armor", tmp);
+                }
             }
             if(FilterWoodworking.Checked) {
-                foreach(var tmp in ((Server.Account.Character)CharacterBox.SelectedItem).Woodworking)
+                foreach(var tmp in ((Server.Account.Character)CharacterBox.SelectedItem).Woodworking) {
+                    if(FilterWeapons.Checked && tmp.Value.Armor)
+                        continue;
+                    if(FilterArmors.Checked && !tmp.Value.Armor)
+                        continue;
                     AddListViewItem("Woodworking", tmp);
+                }
             }
-            if(FilterClothingLight.Checked) {
+            if(FilterClothingLight.Checked && !FilterWeapons.Checked) {
                 foreach(var tmp in ((Server.Account.Character)CharacterBox.SelectedItem).ClothingLight)
-                    AddListViewItem("Clothing_Light", tmp);
+                    AddListViewItem("Light Armor", tmp);
             }
-            if(FilterClothingMedium.Checked) {
+            if(FilterClothingMedium.Checked && !FilterWeapons.Checked) {
                 foreach(var tmp in ((Server.Account.Character)CharacterBox.SelectedItem).ClothingMedium)
-                    AddListViewItem("Clothing_Medium", tmp);
+                    AddListViewItem("Medium Armor", tmp);
+            }
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            if(listView1.Items.Count > 0) {
+                listView1.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.ColumnContent);
+                listView1.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 
         private void button1_Click(object sender, EventArgs e) { ReloadServerList(); }
 
-        private void Filter_CheckedChanged(object sender, EventArgs e) { CharacterBox_SelectedIndexChanged(null, null); }
+        private void Filter_CheckedChanged(object sender, EventArgs e) {
+            CharacterBox_SelectedIndexChanged(null, null);
+        }
 
         private class Server {
             internal readonly List<Account> Accounts = new List<Account>();
@@ -214,6 +232,10 @@
                         if(!list.ContainsKey(subSection))
                             list.Add(subSection, new WeaponArmorItem());
                         var trait = GetSectionName(line);
+                        if(trait.Equals("Armor", StringComparison.CurrentCultureIgnoreCase)) {
+                            list[subSection].Armor = line.Trim().EndsWith("= true,");
+                            return;
+                        }
                         line = line.Trim();
                         var traitStatus = byte.Parse(line.Substring(line.Length - 2, 1));
                         switch(trait) {
@@ -274,13 +296,7 @@
                     }
 
                     internal class WeaponArmorItem {
-                        internal enum TraitStatus: byte {
-                            Missing = 0,
-                            Learned = 1,
-                            InTraining = 2,
-                            Stored = 3,
-                            NotAvailable = byte.MaxValue
-                        }
+                        internal bool Armor;
 
                         #region Weapon Traits
 
@@ -310,6 +326,14 @@
                         internal TraitStatus WellFitted = TraitStatus.NotAvailable;
 
                         #endregion
+
+                        internal enum TraitStatus: byte {
+                            Missing = 0,
+                            Learned = 1,
+                            InTraining = 2,
+                            Stored = 3,
+                            NotAvailable = byte.MaxValue
+                        }
                     }
                 }
             }
